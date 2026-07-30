@@ -897,9 +897,9 @@ contactBtn.addEventListener('click', (e) => {
 });
 document.addEventListener('click', () => { contactMenu.style.display = 'none'; });
 
-/* harita fab — mekan bölümüne scroll */
+/* harita fab — Google Maps aç */
 document.getElementById('map-fab').addEventListener('click', () => {
-  document.getElementById('map-btn').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  window.open('https://maps.app.goo.gl/EQDHpMJ2FYFfmBqB6', '_blank');
 });
 
 /* music fab */
