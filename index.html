@@ -323,13 +323,13 @@
       align-items:center; justify-content:center;
       padding-bottom:8%;
     }
-    .badge-month {
-      font-size:.64rem; letter-spacing:.3em; text-transform:uppercase;
-      color:var(--gold-dk);
-    }
     .badge-day {
       font-family: var(--f-display);
       font-size:3.1rem; font-weight:400; color:var(--brown); line-height:1;
+    }
+    .badge-month {
+      font-size:.64rem; letter-spacing:.3em; text-transform:uppercase;
+      color:var(--gold-dk); margin-top:.1rem;
     }
     .badge-year {
       font-size:.58rem; letter-spacing:.2em; color:var(--muted);
@@ -684,8 +684,8 @@
       <div class="date-badge">
         <img src="Image/date-frame.webp" alt="" aria-hidden="true" />
         <div class="badge-text">
-          <span class="badge-month">Ağustos</span>
           <span class="badge-day">22</span>
+          <span class="badge-month">Ağustos</span>
           <span class="badge-year">2026</span>
         </div>
       </div>
@@ -761,13 +761,16 @@ const skipBtn   = document.getElementById('intro-skip');
 const mainPage  = document.getElementById('main-page');
 
 function openInvitation() {
+  // Önce içerik görünür — video arkada çalmaya devam eder
+  mainPage.classList.add('visible');
+  document.body.style.overflowY = 'auto';
+  initReveal();
+  // Sonra overlay (video dahil) yavaşça söner
   overlay.classList.add('fade-out');
   setTimeout(() => {
     overlay.style.display = 'none';
-    mainPage.classList.add('visible');
-    document.body.style.overflowY = 'auto';
-    initReveal();
-  }, 900);
+    introVid.pause();
+  }, 1300);
 }
 
 // Başlangıçta scroll kilitle
@@ -800,10 +803,11 @@ function beginVideo() {
   });
 }
 
-function onTouch(e) { e.preventDefault(); beginVideo(); }
-function onClick()  { beginVideo(); }
+let started = false;
+function onTouch() { if(started) return; started = true; beginVideo(); }
+function onClick()  { if(started) return; started = true; beginVideo(); }
 
-overlay.addEventListener('touchstart', onTouch, { passive: false });
+overlay.addEventListener('touchend', onTouch, { passive: true });
 overlay.addEventListener('click', onClick);
 
 
