@@ -719,7 +719,7 @@
 </div><!-- /main-page -->
 
 <!-- Audio ve fab — display:none parent'ın dışında, her zaman yüklenir -->
-<audio id="audio" loop preload="auto">
+<audio id="audio" loop preload="auto" autoplay muted>
   <source src="Music/music.mp3" type="audio/mpeg">
 </audio>
 
@@ -740,17 +740,17 @@ const musicFab = document.getElementById('music-fab');
 const fabOn    = document.getElementById('fab-on');
 const fabOff   = document.getElementById('fab-off');
 
-// Müzik başlat — async/await YOK, gesture zinciri kırılmaz
+// Sayfa yüklenince sessiz autoplay dene
+audio.play().catch(function() {});
+
+// Kullanıcı dokunduğunda sesi aç
 function startMusic() {
+  audio.muted = false;
+  if (audio.paused) {
+    audio.play().catch(function() {});
+  }
   fabOn.style.display = 'block';
   fabOff.style.display = 'none';
-  audio.play().catch(function() {
-    // Direkt play başarısız → muted ile başla, sonra unmute
-    audio.muted = true;
-    audio.play().then(function() {
-      audio.muted = false;
-    }).catch(function() {});
-  });
 }
 
 /* ─── INTRO VIDEO ────────────────────────────────── */
@@ -835,12 +835,13 @@ addEventListener('scroll', () => {
 
 /* music fab */
 musicFab.addEventListener('click', () => {
-  if (audio.paused) {
+  if (audio.muted || audio.paused) {
+    audio.muted = false;
     audio.play().catch(() => {});
     fabOn.style.display  = 'block';
     fabOff.style.display = 'none';
   } else {
-    audio.pause();
+    audio.muted = true;
     fabOn.style.display  = 'none';
     fabOff.style.display = 'block';
   }
