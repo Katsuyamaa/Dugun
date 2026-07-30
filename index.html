@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -38,6 +38,7 @@
       --f-script:  'Great Vibes', cursive;
       --f-serif:   'Cormorant Garamond', serif;
       --f-display: 'Playfair Display', serif;
+      --f-wedding: 'Cinzel Decorative', serif;
       --f-sans:    'Jost', sans-serif;
     }
 
@@ -54,11 +55,17 @@
     /* ─── INTRO VIDEO OVERLAY ─────────────────────────── */
     #intro-overlay {
       position: fixed; inset: 0; z-index: 10000;
-      background: #0a0704;
+      background: url('Image/intro-poster.jpg') center/cover no-repeat;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       cursor: pointer;
-      transition: opacity .9s ease;
+      transition: opacity 1.2s ease;
+    }
+    #intro-overlay::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(10,7,4,.52);
+      z-index: 0;
     }
     #intro-overlay.fade-out {
       opacity: 0;
@@ -204,7 +211,7 @@
     /* Full bleed photo background */
     .hero-bg {
       position: absolute; inset:0;
-      background: url('Image/intro-poster.jpg') center/cover no-repeat;
+      background: url('Image/bg.webp') center/cover no-repeat;
       z-index: 0;
     }
 
@@ -240,10 +247,10 @@
       line-height:1.02;
     }
     .name-main {
-      font-family: var(--f-display);
-      font-size: clamp(2.4rem,11vw,3.8rem);
+      font-family: var(--f-wedding);
+      font-size: clamp(1.9rem,9vw,3rem);
       font-weight:700; color:var(--brown);
-      display:block; letter-spacing:-.01em;
+      display:block; letter-spacing:.04em;
     }
     .name-ve {
       font-family: var(--f-script);
@@ -262,17 +269,20 @@
       margin-top:.9rem; text-align:center;
     }
     .families-row {
-      display:flex; justify-content:center; align-items:baseline;
-      gap:.6rem;
-      font-size:.6rem; letter-spacing:.28em; text-transform:uppercase;
+      display:grid; grid-template-columns:1fr auto 1fr;
+      align-items:baseline; gap:.4rem;
+      font-size:.58rem; letter-spacing:.25em; text-transform:uppercase;
       color:var(--gold-dk); line-height:1.6;
     }
-    .families-sep { color:var(--gold); }
+    .families-row span:first-child { text-align:right; }
+    .families-row span:last-child  { text-align:left; }
+    .families-sep { color:var(--gold); text-align:center; }
     .families-surnames {
-      font-size:.6rem; letter-spacing:.28em;
-      color:var(--gold-dk); font-weight:400;
+      font-size:.62rem; letter-spacing:.3em;
+      color:var(--brown); font-weight:500;
     }
-    .families-surnames span:empty { width:1.2rem; }
+    .families-surnames span:first-child { text-align:center; }
+    .families-surnames span:last-child  { text-align:center; }
 
     /* ─── DATE ROW (inside hero, bottom) ─ */
     .hero-date-row {
@@ -550,6 +560,14 @@
     #music-fab:hover { background: rgba(184,151,90,.35); border-color: var(--gold); transform: scale(1.08); }
     #music-fab svg { width: 20px; height: 20px; fill: rgba(212,182,120,.9); }
 
+    /* ─── HERO VENUE SECTION ─ */
+    .hero-venue {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 1.4rem 1.5rem 2rem;
+      border-top: 1px solid rgba(184,151,90,.2);
+    }
+
     /* ─── SCROLL REVEAL ─ */
     .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
     .reveal.in { opacity:1; transform:translateY(0); }
@@ -684,25 +702,12 @@
         <span>Saat</span>
       </div>
     </div>
-  </div>
 
-  <!-- ══ MEKAN — bg.webp arka plan ══ -->
-  <div class="lace-card reveal">
-    <div class="lace-bg"></div>
-    <div class="lace-overlay"></div>
-    <div class="lace-inner">
-      <span class="card-tag">Mekan</span>
-      <svg class="orn" height="14" viewBox="0 0 200 14" fill="none">
-        <line x1="0" y1="7" x2="76" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".4"/>
-        <circle cx="84" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-        <circle cx="100" cy="7" r="3" fill="none" stroke="#B8975A" stroke-width=".8" stroke-opacity=".4"/>
-        <circle cx="100" cy="7" r="1.2" fill="#B8975A" fill-opacity=".35"/>
-        <circle cx="116" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-        <line x1="124" y1="7" x2="200" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".4"/>
-      </svg>
-      <h1 class="card-title">WORLDPOİNT ATATEPE SOSYAL TESİSLERİ</h1>
-      <p class="card-sub">İstanbul, Türkiye</p>
-      <p style="font-family:var(--f-serif);font-style:italic;font-size:.95rem;color:var(--muted);margin-top:.7rem;">Düğünümüz yemeklidir.</p>
+    <!-- Mekan — hero içinde, date-row'un altında -->
+    <div class="hero-venue">
+      <span class="card-tag" style="margin-bottom:.4rem;">Mekan</span>
+      <p class="card-title" style="font-size:clamp(1rem,4vw,1.25rem);">WORLDPOİNT ATATEPE SOSYAL TESİSLERİ</p>
+      <p style="font-family:var(--f-serif);font-style:italic;font-size:.88rem;color:var(--muted);margin:.3rem 0 .6rem;">İstanbul · Düğünümüz yemeklidir.</p>
       <a href="https://maps.app.goo.gl/EQDHpMJ2FYFfmBqB6"
          target="_blank" rel="noopener" class="map-btn" id="map-btn">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
@@ -741,11 +746,25 @@ const musicFab = document.getElementById('music-fab');
 const fabOn    = document.getElementById('fab-on');
 const fabOff   = document.getElementById('fab-off');
 
-// iOS Safari unlock: ilk dokunuşta ses bağlamını aç
+// iOS Safari unlock: ilk dokunuşta ses bağlamını hazırla
 document.addEventListener('touchstart', function iosUnlock() {
   document.removeEventListener('touchstart', iosUnlock);
-  audio.load();
+  // Sessizce play→pause: iOS ses bağlamını açar
+  audio.muted = true;
+  audio.play().then(() => { audio.pause(); audio.muted = false; audio.currentTime = 0; }).catch(() => {});
 }, { once: true, passive: true });
+
+async function startMusic() {
+  try {
+    audio.muted = false;
+    await audio.play();
+  } catch(e) {
+    // Fallback: muted başlat, unmute et
+    try { audio.muted = true; await audio.play(); audio.muted = false; } catch(e2) {}
+  }
+  fabOn.style.display = 'block';
+  fabOff.style.display = 'none';
+}
 
 /* ─── INTRO VIDEO ────────────────────────────────── */
 const overlay   = document.getElementById('intro-overlay');
@@ -771,10 +790,8 @@ document.body.style.overflowY = 'hidden';
 overlay.addEventListener('click', function startVideo() {
   overlay.removeEventListener('click', startVideo);
 
-  // Müziği burada başlat — user gesture zinciri canlı
-  audio.play().catch(() => {});
-  fabOn.style.display  = 'block';
-  fabOff.style.display = 'none';
+  // Müziği başlat (user gesture anında)
+  startMusic();
 
   // Bekleme ekranını gizle
   tapScreen.style.opacity = '0';
@@ -787,8 +804,17 @@ overlay.addEventListener('click', function startVideo() {
   introVid.style.opacity = '1';
   skipBtn.style.display  = 'flex';
 
-  introVid.play().catch(() => openInvitation());
-  introVid.addEventListener('ended', openInvitation, { once: true });
+  const played = introVid.play().catch(() => { openInvitation(); return null; });
+
+  // 2. saniyede geçiş başlat
+  if (played !== null) {
+    introVid.addEventListener('timeupdate', function onTime() {
+      if (introVid.currentTime >= 2) {
+        introVid.removeEventListener('timeupdate', onTime);
+        openInvitation();
+      }
+    });
+  }
 });
 
 // Geç butonu
