@@ -99,6 +99,8 @@
       width: 100%; height: 100%;
       object-fit: cover;
       display: none;
+      opacity: 0;
+      transition: opacity .6s ease;
       z-index: 1;
     }
 
@@ -656,76 +658,6 @@
     </div>
   </div>
 
-  <!-- ══ PROGRAM — plain card ══ -->
-  <div class="plain-card reveal">
-    <div class="inner">
-      <div style="text-align:center; margin-bottom:.2rem;">
-        <span class="card-tag">Program</span>
-        <svg class="orn" height="14" viewBox="0 0 200 14" fill="none">
-          <line x1="0" y1="7" x2="76" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".35"/>
-          <circle cx="84" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-          <circle cx="100" cy="7" r="3" fill="none" stroke="#B8975A" stroke-width=".8" stroke-opacity=".4"/>
-          <circle cx="100" cy="7" r="1.2" fill="#B8975A" fill-opacity=".35"/>
-          <circle cx="116" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-          <line x1="124" y1="7" x2="200" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".35"/>
-        </svg>
-      </div>
-      <div class="prog-list">
-        <div class="prog-item">
-          <span class="prog-t">15:30</span>
-          <div class="prog-sep"></div>
-          <div><div class="prog-name">Misafir Kabulü</div><div class="prog-loc">Grand Foyer</div></div>
-        </div>
-        <div class="prog-item">
-          <span class="prog-t">16:00</span>
-          <div class="prog-sep"></div>
-          <div><div class="prog-name">Nikah Töreni</div><div class="prog-loc">Bahçe Salonu</div></div>
-        </div>
-        <div class="prog-item">
-          <span class="prog-t">17:30</span>
-          <div class="prog-sep"></div>
-          <div><div class="prog-name">Kokteyl & Fotoğraf</div><div class="prog-loc">Teras & Havuz Kenarı</div></div>
-        </div>
-        <div class="prog-item">
-          <span class="prog-t">19:00</span>
-          <div class="prog-sep"></div>
-          <div><div class="prog-name">Düğün Yemeği & Eğlence</div><div class="prog-loc">Balo Salonu</div></div>
-        </div>
-        <div class="prog-item">
-          <span class="prog-t">23:30</span>
-          <div class="prog-sep"></div>
-          <div><div class="prog-name">Pasta Kesimi & Fener</div><div class="prog-loc">Teras</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ COUNTDOWN — arch (Gemini) arka plan ══ -->
-  <div class="arch-card reveal">
-    <div class="arch-bg"></div>
-    <div class="arch-overlay"></div>
-    <div class="arch-inner">
-      <span class="card-tag">Geri Sayım</span>
-      <svg class="orn" height="14" viewBox="0 0 200 14" fill="none">
-        <line x1="0" y1="7" x2="76" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".35"/>
-        <circle cx="84" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-        <circle cx="100" cy="7" r="3" fill="none" stroke="#B8975A" stroke-width=".8" stroke-opacity=".4"/>
-        <circle cx="100" cy="7" r="1.2" fill="#B8975A" fill-opacity=".35"/>
-        <circle cx="116" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-        <line x1="124" y1="7" x2="200" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".35"/>
-      </svg>
-      <div class="cd-row">
-        <div class="cd-block"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">Gün</span></div>
-        <span class="cd-sep">:</span>
-        <div class="cd-block"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">Saat</span></div>
-        <span class="cd-sep">:</span>
-        <div class="cd-block"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">Dakika</span></div>
-        <span class="cd-sep">:</span>
-        <div class="cd-block"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">Saniye</span></div>
-      </div>
-    </div>
-  </div>
-
   <!-- ══ MESAJ — lace bg ══ -->
   <div class="lace-card reveal">
     <div class="lace-bg"></div>
@@ -745,24 +677,6 @@
         yürekler tek bir nefes gibi atar;<br>
         ömür boyu sürecek bu yolculukta<br>
         en güzel anıları sizlerle paylaşmak istiyoruz."
-      </p>
-    </div>
-  </div>
-
-  <!-- ══ KIYAFETcode — plain card ══ -->
-  <div class="plain-card reveal">
-    <div class="inner" style="text-align:center;">
-      <span class="card-tag">Kıyafet Tercihi</span>
-      <p style="font-family:var(--f-display);font-style:italic;font-size:1.1rem;color:var(--brown);margin:.35rem 0 .6rem;">Şık / Gece Kıyafeti</p>
-      <div class="swatches">
-        <div class="swatch" style="background:#F5EBD5;" title="Krem"></div>
-        <div class="swatch" style="background:#D4B678;" title="Altın"></div>
-        <div class="swatch" style="background:#E8D5B5;" title="Şampanya"></div>
-        <div class="swatch" style="background:#C9A88A;" title="Nud"></div>
-        <div class="swatch" style="background:#A07840;" title="Bronz"></div>
-      </div>
-      <p style="font-size:.7rem;color:var(--muted);font-family:var(--f-serif);font-style:italic;">
-        * Beyaz ve krem kıyafetler gelin için ayrılmıştır.
       </p>
     </div>
   </div>
@@ -794,83 +708,6 @@
       <audio id="audio" loop preload="none">
         <!-- Müzik eklemek için: <source src="muzik/dugun.mp3" type="audio/mpeg"> -->
       </audio>
-    </div>
-  </div>
-
-  <!-- ══ RSVP — arch arka plan ══ -->
-  <div class="arch-card reveal">
-    <div class="arch-bg"></div>
-    <div class="arch-overlay" style="background:rgba(250,246,239,.78);"></div>
-    <div class="arch-inner" style="text-align:left;">
-      <div style="text-align:center; margin-bottom:.2rem;">
-        <span class="card-tag">Katılım Bildirimi</span>
-        <svg class="orn" height="14" viewBox="0 0 200 14" fill="none">
-          <line x1="0" y1="7" x2="76" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".35"/>
-          <circle cx="84" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-          <circle cx="100" cy="7" r="3" fill="none" stroke="#B8975A" stroke-width=".8" stroke-opacity=".4"/>
-          <circle cx="100" cy="7" r="1.2" fill="#B8975A" fill-opacity=".35"/>
-          <circle cx="116" cy="7" r="1.8" fill="#B8975A" fill-opacity=".4"/>
-          <line x1="124" y1="7" x2="200" y2="7" stroke="#B8975A" stroke-width=".7" stroke-opacity=".35"/>
-        </svg>
-        <p style="font-family:var(--f-serif);font-style:italic;font-size:.92rem;color:var(--muted);margin:.3rem 0 1rem;line-height:1.7;">
-          Lütfen <strong style="color:var(--gold-dk);">1 Eylül 2025</strong> tarihine kadar<br>katılım durumunuzu bildirin.
-        </p>
-      </div>
-
-      <form class="rsvp-form" id="rsvp-form" novalidate>
-        <div class="row2">
-          <div class="fg">
-            <label for="r-name">Ad Soyad</label>
-            <input type="text" id="r-name" placeholder="Adınız Soyadınız" required />
-          </div>
-          <div class="fg">
-            <label for="r-phone">Telefon</label>
-            <input type="tel" id="r-phone" placeholder="05XX XXX XX XX" />
-          </div>
-        </div>
-        <div class="fg">
-          <label for="r-email">E-posta</label>
-          <input type="email" id="r-email" placeholder="ornek@mail.com" />
-        </div>
-        <div class="row2">
-          <div class="fg">
-            <label for="r-attend">Katılım</label>
-            <select id="r-attend" required>
-              <option value="" disabled selected>Seçiniz…</option>
-              <option value="yes">✓ Katılacağım</option>
-              <option value="maybe">Belki</option>
-              <option value="no">Katılamayacağım</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label for="r-guests">Kişi Sayısı</label>
-            <select id="r-guests">
-              <option value="1">1 Kişi</option>
-              <option value="2" selected>2 Kişi</option>
-              <option value="3">3 Kişi</option>
-              <option value="4">4 Kişi</option>
-              <option value="5+">5+</option>
-            </select>
-          </div>
-        </div>
-        <div class="fg">
-          <label for="r-msg">Mesajınız</label>
-          <textarea id="r-msg" placeholder="Tebrik ya da dilek mesajınızı yazabilirsiniz…"></textarea>
-        </div>
-        <button type="submit" class="submit-btn" id="rsvp-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/>
-          </svg>
-          Katılımımı Bildir
-        </button>
-      </form>
-
-      <div class="rsvp-ok" id="rsvp-ok" style="text-align:center;">
-        <p style="font-size:2rem; margin-bottom:.5rem;">🌸</p>
-        <p>Teşekkürler! Katılımınız alındı.<br>
-           <span style="color:var(--gold-dk);">Sizi görmek için sabırsızlanıyoruz!</span></p>
-      </div>
     </div>
   </div>
 
@@ -929,8 +766,10 @@ overlay.addEventListener('click', function startVideo() {
   tapScreen.style.pointerEvents = 'none';
   setTimeout(() => tapScreen.style.display = 'none', 400);
 
-  // Video göster & oynat
+  // Video göster & oynat (fade-in)
   introVid.style.display = 'block';
+  introVid.offsetHeight; // reflow
+  introVid.style.opacity = '1';
   skipBtn.style.display  = 'flex';
 
   introVid.play().catch(() => {
@@ -963,19 +802,6 @@ addEventListener('scroll', () => {
   pb.style.width = (scrollY / s * 100) + '%';
 }, { passive:true });
 
-/* countdown */
-const target = new Date('2025-09-14T19:00:00+03:00');
-const pad = n => String(n).padStart(2,'0');
-function tick() {
-  const d = target - Date.now();
-  if(d <= 0){ ['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00'); return; }
-  document.getElementById('cd-d').textContent = pad(Math.floor(d/86400000));
-  document.getElementById('cd-h').textContent = pad(Math.floor(d%86400000/3600000));
-  document.getElementById('cd-m').textContent = pad(Math.floor(d%3600000/60000));
-  document.getElementById('cd-s').textContent = pad(Math.floor(d%60000/1000));
-}
-tick(); setInterval(tick,1000);
-
 /* music */
 const audio    = document.getElementById('audio');
 const playBtn  = document.getElementById('play-btn');
@@ -1003,20 +829,6 @@ playBtn.addEventListener('click', () => {
     raf = requestAnimationFrame(upd);
   }
   isPlaying = !isPlaying;
-});
-
-/* rsvp */
-document.getElementById('rsvp-form').addEventListener('submit', e => {
-  e.preventDefault();
-  if(!document.getElementById('r-name').value.trim() || !document.getElementById('r-attend').value){
-    alert('Lütfen adınızı ve katılım durumunuzu belirtin.'); return;
-  }
-  const b = document.getElementById('rsvp-btn');
-  b.textContent = 'Gönderiliyor…'; b.disabled = true;
-  setTimeout(() => {
-    document.getElementById('rsvp-form').style.display='none';
-    document.getElementById('rsvp-ok').style.display='block';
-  }, 700);
 });
 
 /* petals */
