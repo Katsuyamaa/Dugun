@@ -236,8 +236,9 @@
     }
 
     .eyebrow {
-      font-size:.6rem; letter-spacing:.45em; text-transform:uppercase;
+      font-size:.78rem; letter-spacing:.4em; text-transform:uppercase;
       color:var(--gold-dk); margin-bottom:.7rem; font-weight:300;
+      margin-top:10px;
     }
 
     /* Thin gold ornament line */
@@ -746,24 +747,17 @@ const musicFab = document.getElementById('music-fab');
 const fabOn    = document.getElementById('fab-on');
 const fabOff   = document.getElementById('fab-off');
 
-// iOS Safari unlock: ilk dokunuşta ses bağlamını hazırla
-document.addEventListener('touchstart', function iosUnlock() {
-  document.removeEventListener('touchstart', iosUnlock);
-  // Sessizce play→pause: iOS ses bağlamını açar
-  audio.muted = true;
-  audio.play().then(() => { audio.pause(); audio.muted = false; audio.currentTime = 0; }).catch(() => {});
-}, { once: true, passive: true });
-
-async function startMusic() {
-  try {
-    audio.muted = false;
-    await audio.play();
-  } catch(e) {
-    // Fallback: muted başlat, unmute et
-    try { audio.muted = true; await audio.play(); audio.muted = false; } catch(e2) {}
-  }
+// Müzik başlat — async/await YOK, gesture zinciri kırılmaz
+function startMusic() {
   fabOn.style.display = 'block';
   fabOff.style.display = 'none';
+  audio.play().catch(function() {
+    // Direkt play başarısız → muted ile başla, sonra unmute
+    audio.muted = true;
+    audio.play().then(function() {
+      audio.muted = false;
+    }).catch(function() {});
+  });
 }
 
 /* ─── INTRO VIDEO ────────────────────────────────── */
