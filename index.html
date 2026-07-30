@@ -85,7 +85,7 @@
     }
     #intro-tap .tap-script {
       font-family: var(--f-script);
-      font-size: clamp(2.8rem, 12vw, 5rem);
+      font-size: clamp(2rem, 8vw, 3.5rem);
       color: var(--gold-lt);
       text-shadow: 0 2px 30px rgba(212,182,120,.4);
       animation: tapPulse 2.5s ease-in-out infinite;
@@ -159,9 +159,9 @@
 
     /* Tap mesajı kenarda altta */
     #intro-tap .tap-names {
-      font-family: var(--f-display);
-      font-size: clamp(1rem, 4vw, 1.5rem);
-      color: rgba(212,182,120,.55);
+      font-family: var(--f-wedding);
+      font-size: clamp(1.6rem, 7vw, 2.4rem);
+      color: rgba(212,182,120,.85);
       letter-spacing: .06em;
     }
 
@@ -542,15 +542,6 @@
       padding:2.8rem 1.8rem 3rem; text-align:center;
     }
 
-    /* ─── MÜZİK TEST BUTONU ─ */
-    #music-test {
-      position: fixed; bottom: 5rem; right: 1.5rem; z-index: 99999;
-      background: rgba(184,151,90,.9); color: #fff;
-      border: none; border-radius: 8px; padding: .5rem .9rem;
-      font-size: .65rem; letter-spacing: .15em; cursor: pointer;
-      backdrop-filter: blur(6px);
-    }
-
     /* ─── MUSIC FLOAT BUTTON ─ */
     #music-fab {
       position: fixed;
@@ -578,13 +569,14 @@
       border-top: 1px solid rgba(184,151,90,.2);
     }
 
-    /* ─── REVEAL — yukardan aşağı staggered ─ */
+    /* ─── REVEAL — ortadan yanlara açılır ─ */
     .reveal {
       opacity: 0;
-      transform: translateY(-28px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: scaleX(0.55);
+      transform-origin: center;
+      transition: opacity .65s ease, transform .65s cubic-bezier(.22,.61,.36,1);
     }
-    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal.in { opacity: 1; transform: scaleX(1); }
   </style>
 </head>
 <body>
@@ -731,9 +723,6 @@
   <source src="Music/music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Müzik test butonu -->
-<button id="music-test">▶ MÜZİK TEST</button>
-
 <!-- Floating müzik butonu — body'nin direkt çocuğu, transform'dan etkilenmez -->
 <button id="music-fab" aria-label="Müzik aç/kapat">
   <svg id="fab-on" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -784,36 +773,39 @@ function openInvitation() {
 // Başlangıçta scroll kilitle
 document.body.style.overflowY = 'hidden';
 
-// İlk tıklamada video başlar
-overlay.addEventListener('click', function startVideo() {
-  overlay.removeEventListener('click', startVideo);
+// Overlay'e dokunulduğunda video başlar
+// touchstart hem click'ten önce gelir hem de iOS'ta kesin gesture sayılır
+function beginVideo() {
+  overlay.removeEventListener('touchstart', onTouch);
+  overlay.removeEventListener('click', onClick);
 
-  // Müziği başlat (user gesture anında)
-  startMusic();
+  startMusic(); // user gesture anında — iOS dahil çalışır
 
-  // Bekleme ekranını gizle
   tapScreen.style.opacity = '0';
   tapScreen.style.pointerEvents = 'none';
   setTimeout(() => tapScreen.style.display = 'none', 400);
 
-  // Video göster & oynat (fade-in)
   introVid.style.display = 'block';
   introVid.offsetHeight;
   introVid.style.opacity = '1';
   skipBtn.style.display  = 'flex';
 
-  const played = introVid.play().catch(() => { openInvitation(); return null; });
+  introVid.play().catch(() => openInvitation());
 
-  // 2. saniyede geçiş başlat
-  if (played !== null) {
-    introVid.addEventListener('timeupdate', function onTime() {
-      if (introVid.currentTime >= 2) {
-        introVid.removeEventListener('timeupdate', onTime);
-        openInvitation();
-      }
-    });
-  }
-});
+  introVid.addEventListener('timeupdate', function onTime() {
+    if (introVid.currentTime >= 2) {
+      introVid.removeEventListener('timeupdate', onTime);
+      openInvitation();
+    }
+  });
+}
+
+function onTouch(e) { e.preventDefault(); beginVideo(); }
+function onClick()  { beginVideo(); }
+
+overlay.addEventListener('touchstart', onTouch, { passive: false });
+overlay.addEventListener('click', onClick);
+
 
 // Geç butonu
 skipBtn.addEventListener('click', (e) => {
@@ -850,12 +842,6 @@ musicFab.addEventListener('click', () => {
   }
 });
 
-/* müzik test butonu */
-document.getElementById('music-test').addEventListener('click', function() {
-  audio.play()
-    .then(function() { this.textContent = '✓ ÇALIYOR'; }.bind(this))
-    .catch(function(e) { this.textContent = '✗ HATA: ' + e.message; }.bind(this));
-});
 
 </script>
 </body>
