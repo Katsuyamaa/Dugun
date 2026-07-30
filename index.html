@@ -48,7 +48,7 @@
 
     body {
       font-family: var(--f-sans);
-      background: #EDE5D8;
+      background: #FAF6EF;
       color: var(--text);
       overflow-x: hidden;
     }
@@ -194,17 +194,17 @@
     .page {
       max-width: 430px;
       margin: 0 auto;
-      padding: 1.5rem 1rem 5rem;
-      display: flex; flex-direction:column; gap:1.2rem;
+      padding: 0 0 5rem;
+      display: flex; flex-direction:column; gap:0;
       position: relative; z-index:1;
     }
 
     /* ─── HERO CARD (intro-poster.jpg as bg) ─ */
     .hero-card {
       position: relative;
-      border-radius: 26px;
+      border-radius: 0;
       overflow: hidden;
-      min-height: 640px;
+      min-height: 100dvh;
       display: flex; flex-direction:column;
       box-shadow: 0 20px 60px rgba(74,51,32,.25);
     }
@@ -342,7 +342,7 @@
 
     /* ─── LACE BG CARD (bg.webp as background) ─ */
     .lace-card {
-      position:relative; border-radius:24px; overflow:hidden;
+      position:relative; border-radius:0; overflow:hidden;
       box-shadow: 0 10px 40px rgba(74,51,32,.14);
     }
     .lace-card .lace-bg {
