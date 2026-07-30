@@ -1,16 +1,15 @@
 {
   "headers": [
     {
-      "source": "/music/(.*)\\.mp3",
+      "source": "/music/:file",
       "headers": [
         { "key": "Content-Type", "value": "audio/mpeg" },
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        { "key": "Cache-Control", "value": "public, max-age=31536000" }
       ]
     },
     {
-      "source": "/Image/(.*)\\.mp4",
+      "source": "/Image/:file",
       "headers": [
-        { "key": "Content-Type", "value": "video/mp4" },
         { "key": "Accept-Ranges", "value": "bytes" }
       ]
     }

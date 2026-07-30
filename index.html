@@ -12,8 +12,6 @@
   <meta property="og:title"       content="Çağla &amp; Tunahan — Düğün Davetiyesi" />
   <meta property="og:description" content="22 Ağustos 2026 · İstanbul · Düğünümüze davetlisiniz 💛" />
   <meta property="og:image"       content="https://dugundavetyesi.vercel.app/Image/intro-poster.jpg" />
-  <meta property="og:image:width"  content="1200" />
-  <meta property="og:image:height" content="630" />
   <meta property="og:locale"      content="tr_TR" />
 
   <!-- Twitter / iMessage -->
@@ -271,8 +269,8 @@
     }
     .families-sep { color:var(--gold); }
     .families-surnames {
-      font-size:.72rem; letter-spacing:.35em;
-      color:var(--brown); font-weight:500;
+      font-size:.6rem; letter-spacing:.28em;
+      color:var(--gold-dk); font-weight:400;
     }
     .families-surnames span:empty { width:1.2rem; }
 
@@ -737,6 +735,18 @@
 </button>
 
 <script>
+/* ─── MÜZİK (en başta tanımla, her yerden erişilebilsin) ─ */
+const audio    = document.getElementById('audio');
+const musicFab = document.getElementById('music-fab');
+const fabOn    = document.getElementById('fab-on');
+const fabOff   = document.getElementById('fab-off');
+
+// iOS Safari unlock: ilk dokunuşta ses bağlamını aç
+document.addEventListener('touchstart', function iosUnlock() {
+  document.removeEventListener('touchstart', iosUnlock);
+  audio.load();
+}, { once: true, passive: true });
+
 /* ─── INTRO VIDEO ────────────────────────────────── */
 const overlay   = document.getElementById('intro-overlay');
 const tapScreen = document.getElementById('intro-tap');
@@ -804,11 +814,6 @@ addEventListener('scroll', () => {
 }, { passive:true });
 
 /* music fab */
-const audio    = document.getElementById('audio');
-const musicFab = document.getElementById('music-fab');
-const fabOn    = document.getElementById('fab-on');
-const fabOff   = document.getElementById('fab-off');
-
 musicFab.addEventListener('click', () => {
   if (audio.paused) {
     audio.play().catch(() => {});
